@@ -5,15 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-import demo.captain.customview.lefttextrighteditview.LeftTextViewRightEditText1;
-
-/**
- * Created by guoqiang on 2017/6/1.
- */
 
 public class LeftTvRightEtActivity extends AppCompatActivity implements View.OnClickListener {
     Toolbar toolbar;
-    LeftTextViewRightEditText1 lefttvrightetv1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +19,6 @@ public class LeftTvRightEtActivity extends AppCompatActivity implements View.OnC
 
     private void initView() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        lefttvrightetv1 = (LeftTextViewRightEditText1) findViewById(R.id.lefttvrightetv1);
     }
 
     private void initViewState() {
@@ -39,14 +32,10 @@ public class LeftTvRightEtActivity extends AppCompatActivity implements View.OnC
                 finish();
             }
         });
-        lefttvrightetv1.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.lefttvrightetv1:
-                break;
-        }
+
     }
 }

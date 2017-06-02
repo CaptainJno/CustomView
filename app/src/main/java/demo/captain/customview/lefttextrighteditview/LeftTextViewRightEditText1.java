@@ -20,15 +20,15 @@ public class LeftTextViewRightEditText1 extends LinearLayout {
     TextView left_tv;
     EditText right_et;
 
-    CharSequence leftText;
-    ColorStateList leftTextColor = null;
-    int leftTextSize = 14;
-    CharSequence rightHint;
-    CharSequence rightText;
-    ColorStateList rightTextColor = null;
-    int rightTextSize = 14;
-    int rightInputType = EditorInfo.TYPE_NULL;
-    boolean editabled = true;
+    CharSequence leftText;                     //设置属性值变量，并赋默认值
+    ColorStateList leftTextColor = null;       //同上
+    int leftTextSize = 14;                     //同上
+    CharSequence rightHint;                    //同上
+    CharSequence rightText;                    //同上
+    ColorStateList rightTextColor = null;      //同上
+    int rightTextSize = 14;                    //同上
+    int rightInputType = EditorInfo.TYPE_NULL; //同上
+    boolean editabled = true;                  //同上
 
 
     public TextView getLeftTv() {
@@ -49,47 +49,47 @@ public class LeftTextViewRightEditText1 extends LinearLayout {
 
     public LeftTextViewRightEditText1(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        LayoutInflater.from(context).inflate(R.layout.include_lefttv_rightet, this);
+        LayoutInflater.from(context).inflate(R.layout.include_lefttv_rightet, this);                                          //载入布局
         left_tv = (TextView) findViewById(R.id.left_tv);
         right_et = (EditText) findViewById(R.id.right_et);
 
-        TypedArray ta = context.getTheme().obtainStyledAttributes(attrs, R.styleable.LeftTextRightEditView, defStyle, 0);
+        TypedArray ta = context.getTheme().obtainStyledAttributes(attrs, R.styleable.LeftTextRightEditView, defStyle, 0);     //获取属性和值
         int n = ta.getIndexCount();
         for (int i = 0; i < n; i++) {
             int attr = ta.getIndex(i);
             switch (attr) {
-                case R.styleable.LeftTextRightEditView_android_text:
+                case R.styleable.LeftTextRightEditView_android_text:     //左TextView文本内容
                     leftText = ta.getText(attr);
                     break;
-                case R.styleable.LeftTextRightEditView_android_textColor:
+                case R.styleable.LeftTextRightEditView_android_textColor:   //左TextView字体颜色
                     leftTextColor = ta.getColorStateList(attr);
                     break;
-                case R.styleable.LeftTextRightEditView_android_textSize:
+                case R.styleable.LeftTextRightEditView_android_textSize:    //左TextView字体大小
                     leftTextSize = ta.getDimensionPixelSize(attr, leftTextSize);
                     break;
-                case R.styleable.LeftTextRightEditView_rightHint:
+                case R.styleable.LeftTextRightEditView_rightHint:      //右EditText默认文字
                     rightHint = ta.getText(attr);
                     break;
-                case R.styleable.LeftTextRightEditView_rightText:
+                case R.styleable.LeftTextRightEditView_rightText:     //右EditText文本内容
                     rightText = ta.getText(attr);
                     break;
-                case R.styleable.LeftTextRightEditView_rightTextColor:
+                case R.styleable.LeftTextRightEditView_rightTextColor:     //右EditText字体颜色
                     rightTextColor = ta.getColorStateList(attr);
                     break;
-                case R.styleable.LeftTextRightEditView_rightTextSize:
+                case R.styleable.LeftTextRightEditView_rightTextSize:       //右EditText字体大小
                     rightTextSize = ta.getDimensionPixelSize(attr, rightTextSize);
                     break;
-                case R.styleable.LeftTextRightEditView_rightEnabled:
+                case R.styleable.LeftTextRightEditView_rightEnabled:        //右EditText可否编辑
                     editabled = ta.getBoolean(attr, isEnabled());
                     break;
-                case R.styleable.LeftTextRightEditView_rightInputType:
+                case R.styleable.LeftTextRightEditView_rightInputType:       //右EditText输入类型
                     rightInputType = ta.getInt(attr, EditorInfo.TYPE_NULL);
                     break;
             }
         }
-        ta.recycle();
+        ta.recycle();    //释放TypedArray，以便以后再用
 
-        left_tv.setText(leftText);
+        left_tv.setText(leftText);                                                                                              //加载属性的值
         left_tv.setTextColor(leftTextColor != null ? leftTextColor : ColorStateList.valueOf(0xFF212121));
         left_tv.setTextSize(leftTextSize);
         right_et.setHint(rightHint);

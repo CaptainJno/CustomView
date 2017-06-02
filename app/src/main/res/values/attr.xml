@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="LeftTextRightEditView">
+        <!--android自带属性-->
         <attr name="android:text"/>
         <attr name="android:textColor"/>
         <attr name="android:textSize"/>
+        <!--我们自定义的属性-->
         <attr name="rightHint" format="string"/>
         <attr name="rightText" format="string"/>
         <attr name="rightTextColor" format="reference|color"/>
         <attr name="rightTextSize" format="dimension"/>
         <attr name="rightEnabled" format="boolean"/>
-        <attr name="rightInputType">
+        <attr name="rightInputType">   <!--flag是取值范围-->
             <flag name="none" value="0x00000000"/>
             <flag name="text" value="0x00000001"/>
             <flag name="textCapCharacters" value="0x00001001"/>
