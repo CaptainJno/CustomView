@@ -45,4 +45,17 @@
         </attr>
     </declare-styleable>
 
+    <declare-styleable name="Bulletinbar">
+        <attr name="barDefaultText" format="string"/>
+        <attr name="barTextColor" format="reference|color"/>
+        <attr name="barTextSize" format="dimension"/>
+        <attr name="barAutoPlayTime" format="integer|reference"/>
+        <attr name="barInDuration" format="integer"/>
+        <attr name="barOutDuration" format="integer"/>
+        <attr name="barChangeOrientation" format="enum">
+            <enum name="upward" value="0"/>
+            <enum name="downward" value="1"/>
+        </attr>
+        <attr name="barBackground" format="reference|color"/>
+    </declare-styleable>
 </resources>

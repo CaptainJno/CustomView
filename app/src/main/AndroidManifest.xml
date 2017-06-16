@@ -16,6 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".LeftTvRightEtActivity"/>
+        <activity android:name=".BulletinbarActivity"/>
     </application>
 
 </manifest>
