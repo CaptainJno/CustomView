@@ -36,19 +36,18 @@ public class Bulletinbar extends RelativeLayout {
     int barChangeOrientation;        //公告切换方向（从下往上，或从下往上）
     Drawable barBackground;          //公告栏背景颜色
 
-
-    AutoPlayTask autoPlayTask;
-
     static List<String> bulletins;    //公告内容
     boolean isOnlyOneBullentin = false;  //是否只有一条公告（一条公告时，关闭自动播放）
     boolean isAutoPlay = true;           //当前是否自动播放公告
     boolean isAutoPlaying = false;        //是否正在播放
     static int currentBulletinIndex = -1;    //当前播放公告位置
 
-
-    LinearLayout bulletinBarLayout;   //公告栏整个空间
-    static TextView bulletinBarTv;    //公告栏中文本控件
+    AutoPlayTask autoPlayTask;
+    LinearLayout bulletinBarLayout;
+    static TextView bulletinBarTv;
     OnClickListener onClickListener;
+    TranslateAnimation out;
+    TranslateAnimation in;
 
 
     public Bulletinbar(Context context) {
@@ -91,6 +90,10 @@ public class Bulletinbar extends RelativeLayout {
             barBackground = typedArray.getDrawable(R.styleable.Bulletinbar_barBackground) == null ? barBackground : typedArray.getDrawable(R.styleable.Bulletinbar_barBackground);
             typedArray.recycle();
         }
+        out = new TranslateAnimation(Animation.ABSOLUTE, 0, Animation.ABSOLUTE, 0, Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, -0.7f);
+        out.setDuration(barOutDuration);
+        in = new TranslateAnimation(Animation.ABSOLUTE, 0, Animation.ABSOLUTE, 0, Animation.RELATIVE_TO_SELF, 0.7f, Animation.RELATIVE_TO_SELF, 0);
+        in.setDuration(barInDuration);
     }
 
     private void initView(Context context) {
@@ -169,7 +172,7 @@ public class Bulletinbar extends RelativeLayout {
         }
     }
 
-    private static class AutoPlayTask implements Runnable {
+    private class AutoPlayTask implements Runnable {
         private final WeakReference<Bulletinbar> mBulletinbarWeakReference;
 
         private AutoPlayTask(Bulletinbar mBulletinbarWeakReference) {
@@ -187,9 +190,7 @@ public class Bulletinbar extends RelativeLayout {
         }
     }
 
-    private static void changeBulletinText() {
-        TranslateAnimation out = new TranslateAnimation(Animation.ABSOLUTE, 0, Animation.ABSOLUTE, 0, Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, -0.7f);
-        out.setDuration(barOutDuration);
+    private void changeBulletinText() {
         bulletinBarTv.setAnimation(out);    //配置动画
         bulletinBarTv.startAnimation(out);   //启动动画
 
@@ -217,10 +218,8 @@ public class Bulletinbar extends RelativeLayout {
                 }
                 currentBulletinIndex = currentBulletinIndex % bulletins.size();
                 bulletinBarTv.setText(bulletins.get(currentBulletinIndex).trim());
-
-                TranslateAnimation in = new TranslateAnimation(Animation.ABSOLUTE, 0, Animation.ABSOLUTE, 0, Animation.RELATIVE_TO_SELF, 0.7f, Animation.RELATIVE_TO_SELF, 0);
-                in.setDuration(barInDuration);
                 bulletinBarTv.setAnimation(in);   //配置动画(会替换之前的退出动画)
+                bulletinBarTv.startAnimation(in);
             }
         });
     }
