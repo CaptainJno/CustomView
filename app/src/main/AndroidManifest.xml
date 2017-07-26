@@ -17,6 +17,7 @@
         </activity>
         <activity android:name=".LeftTvRightEtActivity"/>
         <activity android:name=".BulletinbarActivity"/>
+        <activity android:name=".WebViewActivity"/>
     </application>
 
 </manifest>

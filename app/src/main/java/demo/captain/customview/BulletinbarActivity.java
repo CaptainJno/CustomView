@@ -53,7 +53,6 @@ public class BulletinbarActivity extends AppCompatActivity implements View.OnCli
             public void onClick(Bulletinbar bulletinbar, int position) {
                 //TODO 你的逻辑
                 Toast.makeText(BulletinbarActivity.this, "当前点击第" + position + "条公告", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent().setClass(BulletinbarActivity.this, LeftTvRightEtActivity.class));
             }
         });
     }

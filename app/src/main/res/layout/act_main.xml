@@ -38,6 +38,16 @@
                 android:padding="8dp"
                 android:text="公告栏"
                 android:textColor="@android:color/white"/>
+
+            <TextView
+                android:id="@+id/tv3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorPrimary"
+                android:padding="8dp"
+                android:text="webview加载html代码并与本地代码交互"
+                android:textColor="@android:color/white"/>
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
